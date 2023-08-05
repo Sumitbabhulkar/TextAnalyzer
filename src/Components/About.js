@@ -1,39 +1,16 @@
-import React, {useState} from 'react'
+import React from 'react'
 
-export default function About() {
+export default function About(props) {
   
   
   
   
-  
-  const [myStyle,setMyStyle] = useState({
-    color:'black',
-    backgroundColor:'white',
-    border: '1px solid black'
-  })
+const myStyle = {
+  color : props.mode === "dark" ? "white" :"black",
+  backgroundColor : props.mode === "dark" ? "black" :"white"
+
+}
  
-  const [btnText,setBtnText] = useState("Enable Dark Mode")
-    
-
-    const toggleStyle = ()=>{
-        if (myStyle.color==="black"){
-            setMyStyle({
-                color:"white",
-                backgroundColor:"black",
-                border: '2px solid red'
-            })
-            setBtnText("Enable Light Mode")
-        }
-        else{
-            setMyStyle({
-                color:"black",
-                backgroundColor:"white",
-                border: '1px solid black'
-                
-            })
-            setBtnText("Enable Dark Mode")
-        }
-    }
 
   
   
@@ -41,12 +18,11 @@ export default function About() {
 
   <>  
   <div className='Container my-3 mx-3' style={myStyle}>
-  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum asperiores fuga veniam, deserunt sit non voluptate optio amet? Officiis pariatur tempora porro sint. Nihil inventore alias, aliquid consectetur minima eum ipsa recusandae deleniti voluptates debitis fugiat atque doloremque magnam eius rem, totam repudiandae sunt similique adipisci blanditiis nobis. Omnis tenetur vel dicta, hic repellendus excepturi?
+  <h1>Welcome! to TextAnalyzer</h1>
+  <p>This is a free text analysis tool for handling text you can change your text in anything you want!!!
   </p>
   </div>
-    <div className="container">
-        <button class="btn btn-primary my-3 mx-1" onClick={toggleStyle}>{btnText}</button>
-        </div>
+
   </>
   )
 }

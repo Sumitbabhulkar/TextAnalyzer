@@ -40,9 +40,9 @@ export default function TextArea(props) {
     
             <textarea class="form-control" id="mybox" value={text} onChange = {handleonChange} rows="10" style={{backgroundColor: props.mode==='dark' ? 'grey' :'white',color : props.mode==='dark' ? 'white' :'black'}} />
             </div>
-            <button class="btn btn-primary my-3" onClick={onUpClick} >Convert to uppercase</button>
-            <button class="btn btn-primary my-3 mx-3" onClick={onlowClick} >Convert to lowercase</button>
-            <button class="btn btn-primary my-3 mx-1" onClick={handleClearText} >Clear Text</button>
+            <button class="btn btn-primary my-3" disabled={text.length===0} onClick={onUpClick} >Convert to uppercase</button>
+            <button class="btn btn-primary mx-2 my-3" disabled={text.length===0} onClick={onlowClick} >Convert to lowercase</button>
+            <button class="btn btn-primary mx-2 my-3" disabled={text.length===0} onClick={handleClearText} >Clear Text</button>
 
    
 
@@ -51,9 +51,9 @@ export default function TextArea(props) {
         <div className= 'container my-3'>
 
             <h2>Your Text Summary</h2>
-            <p>{text.length>0?text : "Nothing to Preview here"}</p>
-            <p>Your words {text.split(" ").length} and characters are {text.length}</p>
-            <p>{0.08 * text.split(" ").length} minutes read</p>
+            <p>{text.length>0 ? text : "Nothing to Preview here"}</p>
+            <p>Your words {text.split(/\s+/).filter((element)=>{return element.length!==0}).length} and characters are {text.length}</p>
+            <p>{0.08 * text.split(" ").filter((element)=>{return element.length!==0}).length} minutes read</p>
 
         </div>
     </>

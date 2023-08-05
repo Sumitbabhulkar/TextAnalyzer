@@ -1,11 +1,12 @@
 import './App.css';
-//import About from './Components/About';
+import About from './Components/About';
 import Navbar from './Components/Navbar';
 import TextArea from './Components/TextArea';
 import Alert from './Components/Alert';
 
+
 import React,{useState} from 'react';
-//import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 
 function App() {
@@ -49,15 +50,21 @@ function App() {
   return (
 
     <>
-
+        <BrowserRouter>
+        
         <Navbar title="TextAnalyzer" mode={mode} toggleMode = {toggleMode} btnText={btnText} />
         <Alert alert={alert}/>
-        <div className="container my-3">
-        
-          <TextArea heading="Enter the text to analyze below" showAlert = {showAlert} mode={mode}/>
-
-        </div>
+      <div className="container my-3">
+        <Routes>
+          <Route path='/' element= {<TextArea heading="Enter the text to analyze below" showAlert = {showAlert} mode={mode}/>} />
+          <Route path='/about' element= {<About mode={mode}/>}>
+          </Route>
+        </Routes>
+       </div>
   
+        
+        
+        </BrowserRouter>
     </>
   );
 }
